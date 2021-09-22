@@ -22,13 +22,10 @@ describe('ApplicationAutoscaling', () => {
     scaleOutThreshold: 45,
   };
 
-  beforeEach(() => {
-    app = Testing.app();
-    stack = new TerraformStack(app, 'test');
-  });
-
   describe('generateIamRole', () => {
     it('renders an IamRole', () => {
+      app = Testing.app();
+      stack = new TerraformStack(app, 'test');
       const construct = new TestResource(stack, 'test-resource');
 
       ApplicationAutoscaling.generateIamRole(construct, props);
